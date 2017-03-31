@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h1 {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+    </style>
+    <title>ITWS Assignment 6 | [[20161065]]</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<div class="jumbotron">
+<script type="text/javascript">
+$(document).ready(function() {
+    viewAllCourses();
+    viewAllStudents();
+});
+</script>
+
+    <body class="container">
+        <script type="text/javascript" src="main.js"></script>
+        <h1 class="text-primary">Javascript OOP</h1>
+
+        <div class="container">
+            <h2>Student form</h2>
+            <form id="addNewStudent">
+                <div class="form-group">
+                    <label for="Rollno">Rollno:</label>
+                    <input class="form-control" name="roll" type="text" id="srollno" placeholder="Enter Rollno.">
+                </div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input class=" form-control" name="name" type="text" id="sname" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <input class=" form-control" name="year" type="text" id="syear" placeholder="Enter Year">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="helperaddNewStudent()">Add Student</button>
+            </form>
+        </div>
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>Student table</h2>
+            <table id="allStudents" class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Roll</td>
+                        <td>Name</td>
+                        <td>Year</td>
+                    </tr>
+                </thead>
+                <tbody id="stable">
+                </tbody>
+            </table>
+        </div>
+
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>Course form</h2>
+            <form id="addCourse">
+                <div class="form-group">
+                    <label for="id">Course Id:</label>
+                    <input class=" form-control" id="cid" name="id" type="text" placeholder="Enter course id">
+                </div>
+                <div class="form-group">
+                    <label for="name">Course name:</label>
+                    <input class=" form-control" id="cname" name="name" type="text" placeholder="Enter Course name">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="helperaddNewCourse()">Add Course</button>
+            </form>
+        </div>
+
+
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>Courses Table</h2>
+            <table id="allCourses" class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                    </tr>
+                </thead>
+                <tbody id="ctable">
+                    <tbody>
+            </table>
+        </div>
+
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>Add Student to Course</h2>
+            <br />
+            <form id="addStudentToCourse">
+                <div class="form-group">
+                    <label for="select">Select Student:</label>
+                    <select class=" form-control" id="sRoll" placeholder="select a Student">
+         </select>
+                </div>
+                <div class="form-group">
+                    <label for="select">Select Course:</label>
+                    <select class=" form-control" id="cId">
+         </select>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="helperAddStudentToCourse()">Add Student to Course</button>
+            </form>
+        </div>
+
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>Drop Student from course</h2>
+            <br/>
+            <form id="DropStudentFromCourse">
+                <div class="form-group">
+                    <label for="select">Select Student</label>
+                    <select class=" form-control" id="sDName">
+         </select>
+                </div>
+                <div class="form-group">
+                    <label for="select">Select Course</label>
+                    <select class=" form-control" id="cDName">
+         </select>
+                </div>
+                <button type="button" class="btn btn-danger" onclick="helperdropStudentFromCourse()">Drop Student from course</button>
+            </form>
+        </div>
+
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>Remove a Course</h2>
+            <br />
+            <form id="RemoveCourse">
+                <div class="form-group">
+                    <label for="select">Select Course</label>
+                    <select class=" form-control" id="cRName">
+         </select>
+                </div>
+                <button type="button" class="btn btn-danger" onclick="helperRemoveCourse()">Remove Course</button>
+            </form>
+        </div>
+
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>Remove Student</h2>
+            <br/>
+            <form id="RemoveStudent">
+                <div class="form-group">
+                    <label for="select">Select Student</label>
+                    <select class=" form-control" id="sRName">
+         </select>
+                </div>
+                <button type="button" class="btn btn-danger" onclick="helperRemoveStudent()">Remove Student</button>
+            </form>
+        </div>
+
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>View Student taking Course</h2>
+            <br />
+            <form id="ViewStudentsTakingCourse">
+                <div class="form-group">
+                    <label for="select">Select Course</label>
+                    <select class=" form-control" id="cVName">
+         </select>
+                </div>
+                <button type="button" class="btn btn-success" onclick="helperviewEnrolled()">View Students</button>
+            </form>
+        </div>
+
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2> Student Table taking above Course</h2>
+            <table id="stc" class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>roll</td>
+                        <td>Name</td>
+                        <td>Year</td>
+                    </tr>
+                </thead>
+                <tbody id="stcTable">
+                    <tbody>
+            </table>
+        </div>
+
+        <br/>
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>View Courses Of Student</h2>
+            <br />
+            <form id="ViewCoursesOfStudent">
+                <div class="form-group">
+                    <label for="select">Select Student</label>
+                    <select class=" form-control" id="sVName">
+         </select>
+                </div>
+                <button type="button" class="btn btn-success" onclick="helperviewCoursesTaken()">View Courses</button>
+            </form>
+        </div>
+
+        <br />
+        <hr>
+        <br />
+
+        <div class="container">
+            <h2>Table of Courses Of selected student</h2>
+            <table id="ctbs" class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                    </tr>
+                </thead>
+                <tbody id="ctbsTable">
+                    <tbody>
+            </table>
+        </div>
+    </body>
+</div>
+
+</html>
